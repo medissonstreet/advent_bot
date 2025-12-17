@@ -6,10 +6,10 @@ from telegram.ext import Application, CommandHandler, CallbackQueryHandler, Mess
 
 # ==================== НАСТРОЙКИ ====================
 # ВАШ ТОКЕН БОТА (уже вставлен)
-BOT_TOKEN = "8541563773:AAH7tfuds2DJH8xkjzQRmR7MUjLnUd_g1ss"
+BOT_TOKEN = os.environ.get('BOT_TOKEN')
 
 # ВАШ ID в Telegram (уже вставлен)
-ADMIN_ID = 380079648
+ADMIN_ID = int(os.environ.get('ADMIN_ID'))
 
 # Часовой пояс Москвы (UTC+3)
 MOSCOW_TZ_OFFSET = 3
@@ -103,16 +103,22 @@ def get_moscow_time():
     return datetime.utcnow() + timedelta(hours=MOSCOW_TZ_OFFSET)
 
 def get_current_advent_day():
-    """Определяем текущий день адвента"""
-    now_moscow = get_moscow_time()
-    today = now_moscow.date()
-    
-    if today < ADVENT_START:
-        return None
-    if today > ADVENT_END:
-        return None
-    
-    return (today - ADVENT_START).days + 1
+    """ВЕРСИЯ ДЛЯ ТЕСТА: Всегда возвращает 17 декабря"""
+    # Закомментируйте старую логику, добавив решетки (#)
+    # now_moscow = get_moscow_time()
+    # today = now_moscow.date()
+    #
+    # if today < ADVENT_START:
+    #     return None
+    # if today > ADVENT_END:
+    #     return None
+    #
+    # return (today - ADVENT_START).days + 1
+
+    # Новая логика для теста
+    test_day = 17  # Меняйте это число на 18, 19 и т.д., чтобы тестировать разные дни
+    print(f"🔧 ТЕСТ: Функция возвращает день {test_day}")
+    return test_day
 
 def is_reward_opened_today(user_id):
     """Проверяем, открывал ли пользователь награду сегодня"""
@@ -421,4 +427,5 @@ def main():
     application.run_polling(allowed_updates=Update.ALL_TYPES)
 
 if __name__ == '__main__':
+
     main()
