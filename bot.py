@@ -6,10 +6,10 @@ from telegram.ext import Application, CommandHandler, CallbackQueryHandler, Mess
 
 # ==================== НАСТРОЙКИ ====================
 # ВАШ ТОКЕН БОТА (уже вставлен)
-BOT_TOKEN = os.environ.get('BOT_TOKEN')
+BOT_TOKEN = "8541563773:AAH7tfuds2DJH8xkjzQRmR7MUjLnUd_g1ss"
 
 # ВАШ ID в Telegram (уже вставлен)
-ADMIN_ID = int(os.environ.get('ADMIN_ID'))
+ADMIN_ID = 380079648
 
 # Часовой пояс Москвы (UTC+3)
 MOSCOW_TZ_OFFSET = 3
@@ -429,3 +429,4 @@ def main():
 if __name__ == '__main__':
 
     main()
+
